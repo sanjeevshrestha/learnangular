@@ -1,0 +1,29 @@
+<html ng-app="store">
+<head>
+	<title>Learn Angular</title>
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+<script type="text/javascript" src="assets/js/angular.min.js"></script>
+<script type="text/javascript" src="assets/js/app.js"></script>
+</head>
+<body ng-controller="StoreController as store">
+<p> I am {{ 4+6 }}</p>
+<div>
+	{{ 'Hello'+ 'Angular' }}
+	</div>
+	<div>
+		<input type="text" name="name" ng-model="name" />
+		<p>{{name|uppercase}}</p>
+	</div>
+
+<div ng-repeat="product in store.products | orderBy:'-price'">
+	<div ng-hide="product.soldOut">
+		<h1> {{ product.name}}</h1>
+		<h2>{{ product.price | currency }}</h2>
+		<p>{{ product.description}}</p>
+
+		<button ng-show="product.canPurchase">Add to Cart</button>
+	</div>
+</div>
+
+</body>
+</html>
